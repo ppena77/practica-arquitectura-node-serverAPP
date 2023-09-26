@@ -9,6 +9,7 @@ const logger = require('morgan');
 // ROUTE SCRIPTS
 
 const indexRouter = require('./routes/index');
+const tempRouter = require('./routes/temp')
 
 // EXPRESS SERVER INSTANCE
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ROUTING
 
 app.use('/', indexRouter);
+app.use('/temp', tempRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
