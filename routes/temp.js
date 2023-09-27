@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Importamos modelo mongoDB "SensorData" 
+// Importamos modelo mongoDB "Temp" 
 const Temp = require('../models/temps');
 
 // * GET TEMPERATURES (Para extraer la temperatura máxima, mínima y la media)
@@ -26,12 +26,12 @@ router.post('/reg', (req, res) => {
     // Apuntamos a la colección de mongoDB "SensorData" y mandamos a inyectar los datos como un nuevo Documento
     Temp.create(data) 
       .then( result => { 
-        res.json(result) // Si todo va bien, mandamos el resultado que nos devuelve el método "create" de mongoose como respuestas
+        res.json(result) // Si todo va bien, mandamos el resultado que nos devuelve el método "create" de mongoose como respuesta
       })
       .catch( err => {
         console.log(err)
         res.send(err)
-      } ) // Si no va bien, imprimimos el error y lo mandamos como respuesta también
+      } ) // Si no va bien, imprimimos el error a la vez que lo mandamos como respuesta también
     
   } else {
     /* Si los datos que llegan no vienen como json, mandamos respuesta a Sensor App e imprimimos en consola igualmente */
