@@ -3,7 +3,7 @@ const Schema = mongoose.Schema; // Importamos método Schema de Mongose
 
 // * Creamos Schema para los datos del sensor
 
-const sensorDataSchema = new Schema({
+const temps = new Schema({
     sensor: String,
     temperatura: Number,
     fecha: String
@@ -11,4 +11,4 @@ const sensorDataSchema = new Schema({
 
 // * Exportamos una instancia de sensorDataSchema, que será el Modelo "SensorData"
 
-module.exports = mongoose.model('SensorData', sensorDataSchema);
+module.exports = mongoose.model('Temp', temps);
