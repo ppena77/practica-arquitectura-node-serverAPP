@@ -6,13 +6,15 @@ const router = express.Router();
 const Temp = require('../models/temps');  // Importamos modelo mongoDB "Temp" 
 const tempCalculations = require('../js/tempCalculations'); // Importamos lo métodos para extraer y calcular los datos de interés (temperatura mínima, máxima, media y número de registros)
 
-// * GET TEMPERATURES (Para extraer la temperatura máxima, mínima y la media)
+// * GET TEMPERATURES (Para extraer la temperatura máxima, mínima, media y número de registros)
 
 router.get('/', (req, res) => {
   Temp.find({}) // Queremos encontrar todos los documentos registrados en la colección Temps de MongoDB
-    .then( rawData => {
-      res.json(rawData);
-      console.log( rawData );
+    .then( rawData => tempCalculations.tempExtraction(rawData) ) // Extraemos las temperaturas de cada registro y las metemos en un array
+    .then( tempArray => tempCalculations.tempOperations(tempArray) ) // Calculamos los datos requeridos
+    .then( result => {
+        // console.log(result);
+        res.send(result) // Respondemos al requerimiento enviando los datos de interés de vueltas
     })
     .catch( err => console.log(err) )
 });
