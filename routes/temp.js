@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
     .then( rawData => tempCalculations.tempExtraction(rawData) ) // Extraemos las temperaturas de cada registro y las metemos en un array
     .then( tempArray => tempCalculations.tempOperations(tempArray) ) // Calculamos los datos requeridos
     .then( result => {
-        // console.log(result);
         res.send(result) // Respondemos al requerimiento enviando los datos de interés de vueltas
     })
     .catch( err => console.log(err) )
