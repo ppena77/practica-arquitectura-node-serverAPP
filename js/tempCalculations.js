@@ -1,23 +1,16 @@
 const tempExtraction = (tempRecords) =>  { // Pasamos datos de la colección Temps a la función
     return new Promise((resolve, reject) => { // Declaramos que retorne una promesa
-        // console.log('firing tempExtraction');
-        // console.log('Checking recieved parameter', tempRecords);
+        
         let tempArray = []; // Declaramos un array vacío donde volcaremos los datos de temperatura
-
-        tempRecords.forEach( tempRecord => {
-            // console.log('Checking tempRecord.temperatura', tempRecord.temperatura);
+        tempRecords.forEach( tempRecord => {            
             tempArray.push(tempRecord.temperatura)
         });
-        // console.log('Checking tempArray', tempArray);
+       
         if (tempArray.length > 0) { // Validación para comprobar que no tenemos un array vacío
-
             resolve(tempArray); // Resolvemos y devolvemos el array con las temperaturas
-            // console.log('Checking if Extraction goes through resolve')
 
         } else { // Si el array está vacío, o bien no hay datos en la colección MongoDB, o la función ha fallado
-
-            reject('No hay datos de temperatura')
-            // console.log('Checking if Extraction goes through reject')
+            reject('No hay datos de temperatura')            
         }
     })
 };
