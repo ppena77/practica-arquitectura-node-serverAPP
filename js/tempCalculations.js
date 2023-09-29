@@ -9,7 +9,7 @@ const tempExtraction = (tempRecords) =>  { // Pasamos datos de la colección Tem
         if (tempArray.length > 0) { // Validación para comprobar que no tenemos un array vacío
             resolve(tempArray); // Resolvemos y devolvemos el array con las temperaturas
 
-        } else { // Si el array está vacío, o bien no hay datos en la colección MongoDB, o la función ha fallado
+        } else { // Si el array está vacío, o bien no hay datos en la colección MongoDB, la promesa se rechaza
             reject('No hay datos de temperatura')            
         }
     })
