@@ -1,6 +1,6 @@
 {
   "name": "server-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "dev": "set DEBUG=server-app:* && nodemon ./bin/www",

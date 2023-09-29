@@ -23,7 +23,10 @@ router.get('/', (req, res) => {
     )
     .then( dataWithoutAverage => tempCalc.getAverageAndSendEverything(dataWithoutAverage)) // Extraemos la media y guardamos todos los datos en un objeto
     .then( finalData => res.json(finalData) ) // Mandamos respuesta con los datos en formato json
-    .catch( err => console.log(err) )
+    .catch( err => {  // Si hay un error, lo mandamos como respuesta y lo imprimimos en consola
+      console.log(err);
+      res.send(err)
+    })
 
 });
 
